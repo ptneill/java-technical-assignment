@@ -16,7 +16,7 @@ public class DiscounterTest {
     void discountsAppliedInMixedBasket() {
         final String nonDiscountedProductName = "non-discounted product";
         final String discountedProductName = "discounted product";
-        final BigDecimal pricePerUnit = new BigDecimal(2.00);
+        final BigDecimal pricePerUnit = new BigDecimal("2.00");
 
         final List<Item> items = new ArrayList<>();
         items.add(buildItem(discountedProductName, pricePerUnit));
@@ -27,7 +27,7 @@ public class DiscounterTest {
         final Discounter discounter = new Discounter();
         discounter.includeDiscount(new BuyOneGetOneFree(discountedProductName));
 
-        assertEquals(new BigDecimal(2.00), discounter.getDiscount(items));
+        assertEquals(new BigDecimal("2.00"), discounter.getDiscount(items));
     }
 
     Item buildItem(String productName, BigDecimal pricePerUnit) {

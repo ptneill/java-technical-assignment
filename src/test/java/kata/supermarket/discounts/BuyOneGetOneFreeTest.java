@@ -22,7 +22,7 @@ public class BuyOneGetOneFreeTest {
     @Test
     void discountGivesZeroDiscountForOne() {
         final String productName = "product";
-        final BigDecimal pricePerUnit = new BigDecimal(2.00);
+        final BigDecimal pricePerUnit = new BigDecimal("2.00");
         final List<Item> items = Collections.singletonList(buildItem(productName, pricePerUnit));
         final BuyOneGetOneFree discount = new BuyOneGetOneFree(productName);
         assertEquals(BigDecimal.ZERO, discount.calculateDiscount(items));
@@ -31,20 +31,20 @@ public class BuyOneGetOneFreeTest {
     @Test
     void discountGiveCorrectDiscountForTwo() {
         final String productName = "product";
-        final BigDecimal pricePerUnit = new BigDecimal(2.00);
+        final BigDecimal pricePerUnit = new BigDecimal("2.00");
 
         final List<Item> items = new ArrayList<>();
         items.add(buildItem(productName, pricePerUnit));
         items.add(buildItem(productName, pricePerUnit));
 
         final BuyOneGetOneFree discount = new BuyOneGetOneFree(productName);
-        assertEquals(new BigDecimal(2.00), discount.calculateDiscount(items));
+        assertEquals(new BigDecimal("2.00"), discount.calculateDiscount(items));
     }
 
     @Test
     void discountGiveCorrectDiscountForThree() {
         final String productName = "product";
-        final BigDecimal pricePerUnit = new BigDecimal(2.00);
+        final BigDecimal pricePerUnit = new BigDecimal("2.00");
 
         final List<Item> items = new ArrayList<>();
         items.add(buildItem(productName, pricePerUnit));
@@ -52,7 +52,7 @@ public class BuyOneGetOneFreeTest {
         items.add(buildItem(productName, pricePerUnit));
 
         final BuyOneGetOneFree discount = new BuyOneGetOneFree(productName);
-        assertEquals(new BigDecimal(2.00), discount.calculateDiscount(items));
+        assertEquals(new BigDecimal("2.00"), discount.calculateDiscount(items));
     }
 
     Item buildItem(String productName, BigDecimal pricePerUnit) {

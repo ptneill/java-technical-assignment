@@ -1,19 +1,37 @@
 package kata.supermarket;
 
+import kata.supermarket.discounts.BuyOneGetOneFree;
+import kata.supermarket.discounts.Discount;
 import kata.supermarket.discounts.Discounter;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BasketTest {
+
+    @Test
+    void correctValueWithDiscount() {
+        final Discounter discounter = new Discounter();
+        discounter.includeDiscount(new BuyOneGetOneFree("Milk"));
+
+        final Basket basket = new Basket(discounter);
+        basket.add(aPintOfMilk());
+        basket.add(aPackOfDigestives());
+        basket.add(aPintOfMilk());
+
+        assertEquals(new BigDecimal("2.04"), basket.total());
+    }
 
     @DisplayName("basket provides its total value when containing...")
     @MethodSource

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class BuyOneGetOneFree extends Discount {
 
-    BuyOneGetOneFree(String productName) {
+    public BuyOneGetOneFree(String productName) {
         super(productName);
     }
 
