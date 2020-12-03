@@ -13,6 +13,14 @@ public class BuyOneGetOneFree extends Discount {
 
     @Override
     public BigDecimal calculateDiscount(List<Item> items) {
-        return BigDecimal.ZERO;
+        BigDecimal discount = BigDecimal.ZERO;
+        boolean addNextToDiscount = false;
+        for (Item item : items) {
+            if (addNextToDiscount) {
+                discount = discount.add(item.price());
+            }
+            addNextToDiscount = !addNextToDiscount;
+        }
+        return discount;
     }
 }
